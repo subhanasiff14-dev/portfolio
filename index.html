@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <link rel="stylesheet" href="./bootstrapfiles/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f7fc;
+            padding-top: 90px;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, .95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .1);
+            padding: 15px 40px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .navbar-brand {
+            font-size: 30px;
+            font-weight: bold;
+            color: #2770dc !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #333 !important;
+            font-weight: 600;
+            margin: 0 12px;
+            position: relative;
+            transition: .4s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #0d6efd !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -5px;
+            width: 0;
+            height: 3px;
+            background: #0d6efd;
+            border-radius: 20px;
+            transition: .4s;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+
+        .form-control {
+            border-radius: 30px;
+        }
+
+        .btn-outline-primary {
+            border-radius: 30px;
+            transition: .4s;
+        }
+
+        .btn-outline-primary:hover {
+            background: #0d6efd;
+            color: white;
+
+        }
+
+        .led-box {
+            width: 350px;
+            height: 420px;
+            padding: 5px;
+            border-radius: 20px;
+            background: linear-gradient(45deg, #00f7ff, #ff00ff, #00ff66, #00f7ff);
+            background-size: 300% 300%;
+            animation: ledGlow 4s linear infinite;
+            box-shadow: 0 0 20px #00f7ff,
+                0 0 40px #ff00ff;
+        }
+
+        .led-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            display: block;
+        }
+
+        @keyframes ledGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .project-card {
+            border-radius: 20px;
+            overflow: hidden;
+            transition: .4s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .15) !important;
+        }
+
+        .project-card img {
+            transition: .5s;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .badge {
+            margin-right: 5px;
+            padding: 8px 12px;
+            font-size: 12px;
+        }
+
+        .footer-section {
+            background: #0d1b2a;
+        }
+
+        .contact-box {
+            background: #1b263b;
+            padding: 30px;
+            border-radius: 15px;
+            color: #fff;
+            transition: .4s;
+        }
+
+        .contact-box:hover {
+            transform: translateY(-10px);
+            background: #415a77;
+        }
+
+        .contact-box i {
+            font-size: 35px;
+            color: #0d6efd;
+            margin-bottom: 15px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            margin: 0 10px;
+            border-radius: 50%;
+            background: #fff;
+            color: #0d6efd;
+            text-decoration: none;
+            font-size: 22px;
+            transition: .4s;
+        }
+
+        .social-icons a:hover {
+            background: #0d6efd;
+            color: #fff;
+            transform: translateY(-5px);
+        }
+
+        .footer-section {
+            background: #0d1b2a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hand-animation {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .left-hand,
+        .right-hand {
+            position: absolute;
+            font-size: 90px;
+            opacity: .12;
+        }
+
+        .left-hand {
+            left: -120px;
+            animation: leftPunch 4s ease-in-out infinite;
+        }
+
+        .right-hand {
+            right: -120px;
+            animation: rightPunch 4s ease-in-out infinite;
+        }
+
+        @keyframes leftPunch {
+            0% {
+                left: -120px;
+            }
+
+            50% {
+                left: calc(50% - 122px);
+            }
+
+            100% {
+                left: -120px;
+            }
+        }
+
+        @keyframes rightPunch {
+            0% {
+                right: -120px;
+            }
+
+            50% {
+                right: calc(50% - 90px);
+            }
+
+            100% {
+                right: -120px;
+            }
+        }
+
+        /* Footer content emojis ke upar rahe */
+        .footer-section .container {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="#" data-aos="fade-right">My Portfolio</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Contact">Contact</a>
+                    </li>
+
+                </ul>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <section class="container py-5" style="padding-left: 150px;">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6" data-aos="fade-right">
+
+                <h5 class="text-primary">Hello, I'm</h5>
+
+                <h1 class="display-4 fw-bold">Subhan Asif</h1>
+
+                <h2 class="mb-3">Front-End Web Developer</h2>
+
+                <p class="text-secondary">
+                    I create responsive and modern websites using HTML, CSS, Bootstrap and JavaScript.
+                    I am passionate about web development and always eager to learn new technologies.
+                </p>
+
+                <a href="#Contact" class="btn btn-primary me-3 px-4 py-2">Hire Me</a>
+
+                <a href="#projects" class="btn btn-outline-primary px-4 py-2">View Projects</a>
+
+            </div>
+
+            <div class="col-lg-6 text-center">
+
+                <div class="led-box" data-aos="fade-left">
+                    <img src="./imges/mine img.jpeg" alt="Profile Image">
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <section id="about" class="py-5" style="background:#ffffff;">
+        <div class="container">
+
+            <div class="text-center mb-5" data-aos="fade-down">
+                <h5 class="text-primary">About Me</h5>
+                <h2 class="fw-bold">Know More About Me</h2>
+                <p class="text-secondary">
+                    A short introduction about myself and my journey.
+                </p>
+            </div>
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-6">
+
+                    <h3 class="fw-bold mb-3" data-aos="fade-right">I'm <span class="text-primary"
+                            data-aos="fade-right">Subhan Asif</span></h3>
+
+                    <p class="text-secondary" style="text-align:justify;" data-aos="fade-right">
+                        I am a passionate <strong>Full Stack Web Developer</strong> from
+                        <strong>Lahore, Pakistan</strong>. I am 20 years old and have completed
+                        <strong>Intermediate (ICS)</strong>. I enjoy building responsive,
+                        modern and user-friendly websites using the latest web technologies.
+                        I am always learning new skills to become a better developer and create
+                        high-quality web applications.
+                    </p>
+
+                    <a href="./Subhan_Asif_CV.pdf" target="_blank" class="btn btn-primary mt-3" data-aos="fade-right">
+                        View CV
+                    </a>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="card shadow border-0 p-4" data-aos="fade-left">
+
+                        <div class="row mb-3">
+                            <div class="col-5"><strong>Name:</strong></div>
+                            <div class="col-7">Subhan Asif</div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-5"><strong>Age:</strong></div>
+                            <div class="col-7">20 Years</div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-5"><strong>City:</strong></div>
+                            <div class="col-7">Lahore, Pakistan</div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-5"><strong>Education:</strong></div>
+                            <div class="col-7">Intermediate (ICS)</div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-5"><strong>Status:</strong></div>
+                            <div class="col-7">Unmarried</div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-5"><strong>Profession:</strong></div>
+                            <div class="col-7">Full Stack Web Developer</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5"><strong>Hobbies:</strong></div>
+                            <div class="col-7">
+                                🏋️ Gym <br>
+                                🥊 Boxing <br>
+                                🏃 Running <br>
+                                🎮 Playing Free Fire <br>
+                                💭 Thinking & Learning New Ideas
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills" class="py-5" style="background:#f4f7fc;">
+        <div class="container py-4">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h5 class="text-primary fw-bold text-uppercase">My Skills</h5>
+                <h2 class="fw-bold">Professional Skills</h2>
+                <p class="text-muted">Technologies and tools I use to build modern and responsive websites.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- HTML 5 -->
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="card border-0 shadow-sm p-4 h-100 skill-card"
+                        style="border-radius: 16px; transition: 0.3s; background: #fff;">
+                        <h5 class="fw-bold"><i class="fa-brands fa-html5 text-danger me-2"></i>HTML 5</h5>
+                        <div class="progress mt-3" style="height:10px; border-radius: 10px; background-color: #f1f5f9;">
+                            <!-- Custom CSS class 'animated-progress' and data-width used for animation -->
+                            <div class="progress-bar bg-danger animated-progress" data-width="95%"
+                                style="width: 0%; border-radius: 10px; transition: width 1.5s ease-in-out;"></div>
+                        </div>
+                        <!-- Counter span is targetted by JS -->
+                        <p class="text-end mt-2 fw-bold text-danger"><span class="counter" data-target="95">0</span>%
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CSS 3 -->
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="card border-0 shadow-sm p-4 h-100 skill-card"
+                        style="border-radius: 16px; transition: 0.3s; background: #fff;">
+                        <h5 class="fw-bold"><i class="fa-brands fa-css3-alt text-primary me-2"></i>CSS 3</h5>
+                        <div class="progress mt-3" style="height:10px; border-radius: 10px; background-color: #f1f5f9;">
+                            <div class="progress-bar bg-primary animated-progress" data-width="90%"
+                                style="width: 0%; border-radius: 10px; transition: width 1.5s ease-in-out;"></div>
+                        </div>
+                        <p class="text-end mt-2 fw-bold text-primary"><span class="counter" data-target="90">0</span>%
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bootstrap 5 -->
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="card border-0 shadow-sm p-4 h-100 skill-card"
+                        style="border-radius: 16px; transition: 0.3s; background: #fff;">
+                        <h5 class="fw-bold"><i class="fa-brands fa-bootstrap me-2" style="color:#563d7c;"></i>Bootstrap
+                            5</h5>
+                        <div class="progress mt-3" style="height:10px; border-radius: 10px; background-color: #f1f5f9;">
+                            <div class="progress-bar animated-progress" data-width="90%"
+                                style="width: 0%; border-radius: 10px; transition: width 1.5s ease-in-out; background-color:#563d7c;">
+                            </div>
+                        </div>
+                        <p class="text-end mt-2 fw-bold" style="color:#563d7c;"><span class="counter"
+                                data-target="90">0</span>%</p>
+                    </div>
+                </div>
+
+                <!-- JavaScript -->
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="card border-0 shadow-sm p-4 h-100 skill-card"
+                        style="border-radius: 16px; transition: 0.3s; background: #fff;">
+                        <h5 class="fw-bold"><i class="fa-brands fa-js text-warning me-2"></i>JavaScript</h5>
+                        <div class="progress mt-3" style="height:10px; border-radius: 10px; background-color: #f1f5f9;">
+                            <div class="progress-bar bg-warning animated-progress" data-width="75%"
+                                style="width: 0%; border-radius: 10px; transition: width 1.5s ease-in-out;"></div>
+                        </div>
+                        <p class="text-end mt-2 fw-bold text-warning"><span class="counter" data-target="75">0</span>%
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Responsive Design -->
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="card border-0 shadow-sm p-4 h-100 skill-card"
+                        style="border-radius: 16px; transition: 0.3s; background: #fff;">
+                        <h5 class="fw-bold"><i class="fa-solid fa-mobile-screen-button text-info me-2"></i>Responsive
+                            Design</h5>
+                        <div class="progress mt-3" style="height:10px; border-radius: 10px; background-color: #f1f5f9;">
+                            <div class="progress-bar bg-info animated-progress" data-width="85%"
+                                style="width: 0%; border-radius: 10px; transition: width 1.5s ease-in-out;"></div>
+                        </div>
+                        <p class="text-end mt-2 fw-bold text-info"><span class="counter" data-target="85">0</span>%</p>
+                    </div>
+                </div>
+
+                <!-- Git & GitHub -->
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="card border-0 shadow-sm p-4 h-100 skill-card"
+                        style="border-radius: 16px; transition: 0.3s; background: #fff;">
+                        <h5 class="fw-bold"><i class="fa-brands fa-git-alt text-dark me-2"></i>Git & GitHub</h5>
+                        <div class="progress mt-3" style="height:10px; border-radius: 10px; background-color: #f1f5f9;">
+                            <div class="progress-bar bg-dark animated-progress" data-width="70%"
+                                style="width: 0%; border-radius: 10px; transition: width 1.5s ease-in-out;"></div>
+                        </div>
+                        <p class="text-end mt-2 fw-bold text-dark"><span class="counter" data-target="70">0</span>%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="projects" class="py-5 bg-white">
+
+        <div class="container">
+
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h5 class="text-primary">My Projects</h5>
+                <h2 class="fw-bold">Latest Work</h2>
+                <p class="text-secondary">
+                    Here are some of my recent web development projects.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-right">
+                    <div class="card border-0 shadow h-100 project-card">
+
+                        <img src="./imges/mine img.jpeg" class="card-img-top" height="220" style="object-fit:cover;">
+
+                        <div class="card-body">
+
+                            <h4 class="fw-bold">Personal Portfolio</h4>
+
+                            <p class="text-secondary">
+                                A modern responsive portfolio website built with HTML, CSS and Bootstrap.
+                            </p>
+
+                            <span class="badge bg-primary">HTML</span>
+                            <span class="badge bg-danger">CSS</span>
+                            <span class="badge bg-success">Bootstrap</span>
+
+                            <div class="mt-4">
+
+                                <a href="http://127.0.0.1:5500/1.html#" class="btn btn-primary btn-sm">view Project</a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="col-md-4" data-aos="fade-dawn">
+                    <div class="card border-0 shadow h-100 project-card">
+
+                        <img src="./imges/resturent.webp" class="card-img-top" height="220" style="object-fit:cover;">
+
+                        <div class="card-body">
+
+                            <h4 class="fw-bold">Restaurant Website</h4>
+
+                            <p class="text-secondary">
+                                Responsive restaurant website with attractive homepage and menu section.
+                            </p>
+
+                            <span class="badge bg-primary">HTML</span>
+                            <span class="badge bg-danger">CSS</span>
+                            <span class="badge bg-warning text-dark">JavaScript</span>
+
+                            <div class="mt-4">
+
+                                <a href="http://127.0.0.1:5500/project10.html" class="btn btn-primary btn-sm">View
+                                    Project</a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="col-md-4" data-aos="fade-left">
+                    <div class="card border-0 shadow h-100 project-card">
+
+                        <img src="./imges/calculator.avif" class="card-img-top" height="220" style="object-fit:cover;">
+
+                        <div class="card-body">
+
+                            <h4 class="fw-bold">Calculator App</h4>
+
+                            <p class="text-secondary">
+                                A fully functional calculator built using HTML, CSS and JavaScript.
+                            </p>
+
+                            <span class="badge bg-primary">HTML</span>
+                            <span class="badge bg-danger">CSS</span>
+                            <span class="badge bg-warning text-dark">JavaScript</span>
+
+                            <div class="mt-4">
+
+                                <a href="http://127.0.0.1:5500/project9.html" class="btn btn-primary btn-sm">view
+                                    Project</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-right">
+                    <div class="card border-0 shadow h-100 project-card">
+
+                        <img src="./imges/form.avif" class="card-img-top" height="220" style="object-fit:cover;">
+
+                        <div class="card-body">
+
+                            <h4 class="fw-bold">Login Form</h4>
+
+                            <p class="text-secondary">
+                                Beautiful animated login page with modern UI design.
+                            </p>
+
+                            <span class="badge bg-primary">HTML</span>
+                            <span class="badge bg-danger">CSS</span>
+
+                            <div class="mt-4">
+
+                                <a href="http://127.0.0.1:5500/project2.html" class="btn btn-primary btn-sm">View
+                                    Project</a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="card border-0 shadow h-100 project-card">
+
+                        <img src="./imges/lading page.webp" class="card-img-top" height="220" style="object-fit:cover;">
+
+                        <div class="card-body">
+
+                            <h4 class="fw-bold">Landing Page</h4>
+
+                            <p class="text-secondary">
+                                Creative landing page with smooth scrolling and responsive layout.
+                            </p>
+
+                            <span class="badge bg-primary">HTML</span>
+                            <span class="badge bg-danger">CSS</span>
+                            <span class="badge bg-success">Bootstrap</span>
+
+                            <div class="mt-4">
+
+                                <a href="http://127.0.0.1:5500/project6.html" class="btn btn-primary btn-sm">View
+                                    project</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="col-md-4" data-aos="fade-left">
+                    <div class="card border-0 shadow h-100 project-card">
+
+                        <img src="./imges/ww.png" class="card-img-top" height="220" style="object-fit:cover;">
+
+                        <div class="card-body">
+
+                            <h4 class="fw-bold">Weather App</h4>
+
+                            <p class="text-secondary">
+                                Simple weather application using JavaScript API integration.
+                            </p>
+
+                            <span class="badge bg-warning text-dark">JavaScript</span>
+                            <span class="badge bg-success">API</span>
+
+                            <div class="mt-4">
+
+                                <a href="http://127.0.0.1:5500/project4.html" class="btn btn-primary btn-sm">View
+                                    Project</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer id="Contact" class="footer-section py-5">
+
+
+
+        <div class="container">
+
+            <div class="text-center mb-4" data-aos="fade-up">
+                <h2 class="fw-bold text-white">Contact Me</h2>
+                <p class="text-light">
+                    Let's work together! Feel free to contact me.
+                </p>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4" data-aos="fade-right">
+                    <div class="contact-box">
+                        <i class="fas fa-envelope"></i>
+                        <h5>Email</h5>
+                        <p>subhanasif.14@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="contact-box">
+                        <i class="fas fa-phone"></i>
+                        <h5>Phone</h5>
+                        <p>+92 348 3801367</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4" data-aos="fade-left">
+                    <div class="contact-box">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h5>Location</h5>
+                        <p>Lahore, Pakistan</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="social-icons text-center mt-4">
+
+                <a href="#" data-aos="fade-right"><i class="fab fa-facebook-f"></i></a>
+
+                <a href="#" data-aos="fade-up"><i class="fab fa-instagram"></i></a>
+
+                <a href="#" data-aos="fade-dawn"><i class="fab fa-linkedin-in"></i></a>
+
+                <a href="#" data-aos="fade-left"><i class="fab fa-github"></i></a>
+
+            </div>
+            <div class="hand-animation">
+                <span class="left-hand">🤜🏻</span>
+                <span class="right-hand">🤛🏻</span>
+            </div>
+
+            <hr class="border-light my-4">
+
+            <p class="text-center text-light mb-0">
+                © 2026 Subhan Asif | All Rights Reserved
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        AOS.init({
+            duration: 2000,
+            once: false
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const skillsSection = document.getElementById("skills");
+            const counters = document.querySelectorAll(".counter");
+            const progressBars = document.querySelectorAll(".animated-progress");
+
+            // Counter run karne ka function
+            const runCounters = () => {
+                counters.forEach(counter => {
+                    counter.innerText = "0"; // Reset counter
+                    const updateCounter = () => {
+                        const target = +counter.getAttribute("data-target");
+                        const count = +counter.innerText;
+
+                        // Speed adjust karne ke liye divisor badlein (bada number = slow speed)
+                        const increment = target / 40;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + increment);
+                            setTimeout(updateCounter, 30);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCounter();
+                });
+            };
+
+            // Progress bar fill karne ka function
+            const animateProgressBars = () => {
+                progressBars.forEach(bar => {
+                    const width = bar.getAttribute("data-width");
+                    bar.style.width = width; // Set targets
+                });
+            };
+
+            // Intersection Observer to trigger animations on scroll
+            const observer = new IntersectionObserver((entries, observerInstance) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        runCounters();
+                        animateProgressBars();
+                        observerInstance.unobserve(entry.target); // Sirf pehli dafa scroll karne par animation chalegi
+                    }
+                });
+            }, { threshold: 0.2 }); // Jab 20% section visible hoga tab trigger hoga
+
+            if (skillsSection) {
+                observer.observe(skillsSection);
+            }
+        });
+    </script>
+</body>
+
+</html>
