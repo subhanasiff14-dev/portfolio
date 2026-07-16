@@ -1,0 +1,120 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <title>Restaurant Cash Counter</title>
+
+        <style>
+        body{
+            font-family:Arial;
+            background:#f5f5f5;
+        }
+
+        .container{
+            width:700px;
+            margin:30px auto;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+        }
+
+        h1{
+            text-align:center;
+        }
+
+        .item{
+            display:flex;
+            justify-content:space-between;
+            margin:10px 0;
+        }
+
+        input{
+            width:70px;
+            padding:5px;
+        }
+
+        button{
+            padding:10px 20px;
+            background:green;
+            color:white;
+            border:none;
+            cursor:pointer;
+            margin-top:20px;
+        }
+
+        .receipt{
+            margin-top:20px;
+            border:1px solid gray;
+            padding:15px;
+        }
+        </style>
+        </head>
+
+        <body>
+
+        <div class="container">
+
+        <h1>🍔 Restaurant Cash Counter</h1>
+
+        <div class="item">
+            <label>Burger (Rs 500)</label>
+            <input type="number" id="burger" value="0">
+        </div>
+
+        <div class="item">
+            <label>Pizza (Rs 1200)</label>
+            <input type="number" id="pizza" value="0">
+        </div>
+
+        <div class="item">
+            <label>Fries (Rs 300)</label>
+            <input type="number" id="fries" value="0">
+        </div>
+
+        <div class="item">
+            <label>Cold Drink (Rs 150)</label>
+            <input type="number" id="drink" value="0">
+        </div>
+
+        <button onclick="generateBill()">Generate Bill</button>
+
+        <div class="receipt" id="receipt">
+            Receipt will appear here...
+        </div>
+
+        </div>
+
+ <script>
+
+function generateBill(){
+
+let burger = document.getElementById("burger").value;
+let pizza = document.getElementById("pizza").value;
+let fries = document.getElementById("fries").value;
+let drink = document.getElementById("drink").value;
+
+let total =
+(burger * 500) +
+(pizza * 1200) +
+(fries * 300) +
+(drink * 150);
+
+document.getElementById("receipt").innerHTML = `
+<h3>Restaurant Receipt</h3>
+
+Burger Quantity: ${burger}<br>
+Pizza Quantity: ${pizza}<br>
+Fries Quantity: ${fries}<br>
+Cold Drink Quantity: ${drink}<br>
+
+<hr>
+
+<h2>Total Bill: Rs ${total}</h2>
+`;
+
+}
+
+</script>
+
+        </body>
+        </html>

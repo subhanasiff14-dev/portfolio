@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .container{
+            background-color: rgba(11, 10, 10, 0.527);
+            position: absolute;
+            height: 350px;
+            width: 100%;
+            overflow: hidden;
+        }
+        .h1{
+        position: relative;
+        color: aliceblue;
+        top: 37px;
+        left: 100px;
+        }
+        .child{
+            font-size: 10px;
+            position: relative;
+            left: 220px;
+            top: 18px   ;
+            color:aliceblue;    
+        }
+
+         .child2{
+            position: absolute;
+            top: 100px;
+            left: 200px;
+            z-index: 10;
+            height: 423px;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(1px);
+            padding: 12px 20px;
+            border-radius: 12px 0px 0px 200px;    
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .navbar{
+    position: absolute;
+    top: 100px;
+    right: 205px;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(1px);
+    padding: 10px 20px;
+    border-radius: 0px 12px 0px 0px;
+}
+.navbar ul{
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    position: relative;
+    transition: 0.3s;
+}
+.navbar ul li a:hover{
+    color: goldenrod;
+}
+
+.navbar ul li a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 3px;
+    background: goldenrod;
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover::after{
+    width: 100%;
+}
+
+
+        .texthead{
+            color: aliceblue;
+            
+        }
+
+        .imgcontainer{
+            width: 70%;
+            height: 450px;
+            position: relative;
+            top: 100px;
+            left: 200px;
+            border-radius:12px 12px 200px 200px;
+
+        }
+        .simple{
+            color: goldenrod;
+            position: relative;
+            top: 20px;
+            font-size: 24px;
+            font-weight: lighter;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .btn{
+            position: relative;
+            top: 150px;
+            left: 350px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .btn:hover{
+            color: black;
+            background-color: goldenrod;
+        }
+        .main-section{
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 120px;
+}
+
+.card{
+    width: 280px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.card-header{
+    padding: 12px;
+    color: white;
+    font-weight: bold;
+}
+
+.red{ background: #c0392b; }
+.brown{ background: #b07d3c; }
+.blue{ background: #2c5aa0; }
+
+.card img{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card p{
+    padding: 10px;
+    font-size: 13px;
+}
+
+.card button{
+    margin-bottom: 10px;
+    padding: 6px 12px;
+    border: none;
+    background: goldenrod;
+    cursor: pointer;
+}
+.icon-text{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+}
+
+.icon-text img{
+    width: 30px;
+    height: 30px;
+}
+.footer{
+    display: flex;
+    justify-content: space-around;
+    background: #333;
+    color: white;
+    padding: 40px;
+    margin-top: 50px;
+    border-radius: 100px 100px 0px 0px;
+}
+
+.footer input{
+    display: block;
+    margin: 5px 0;
+    padding: 5px;
+}
+
+.footer button{
+    background: goldenrod;
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+    </style>
+</head>
+<body> 
+         <div class="child2">
+                 <strong class="simple">Lorem ipsum dolor sit amet consectetur <br> add some text</strong>
+                <p style="color: aliceblue; position: relative; top: 100px; text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis id <br>ut eligendi repellendus animi maiores minima dicta. <br> Quidem molestiaebr totam exercitationem iusto est deleniti, <br>esse culpa consectetur possimus incidunt. Cumque?</p>
+              <button class="btn">
+                    see more 
+                </button>
+        
+                </div>
+                  
+    <div class="container">    
+         
+         <div>
+        <h1 class="h1"> <strong style="color: goldenrod;">Education</strong> Website</h1><br>
+        <div class="child">www.Webeducation.com.pk.com</div>
+          </div>
+        </div>
+          <div>
+        <img src="./Imges/good rls colleague.webp" alt="" class="imgcontainer">
+          <div class="navbar">
+
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">Teachers</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+    </div>
+  </div>
+  </div>
+
+  
+<div class="main-section">
+
+    
+    <div class="card">
+        <div class="card-header red">Lorem ipsum dolor</div>
+        <img src="./Imges/download.jpg" alt="">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, nemo.</p>
+        <button>See more</button>
+        
+
+        
+    </div>
+
+    
+    <div class="card">
+        <div class="card-header brown">Lorem ipsum dolor</div>
+
+        <div class="icon-text">
+            <img src="./Imges/icon i.png" alt="">
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
+
+        <div class="icon-text">
+            <img src="./Imges/msg i.png" alt="">
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
+
+        <div class="icon-text">
+            <img src="./Imges/169100.png" alt="">
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
+
+    </div>
+
+   
+    <div class="card">
+        <div class="card-header blue">Lorem ipsum dolor</div>
+        <img src="./Imges/emraan.jpg" alt="">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <button>See more</button>
+    </div>
+
+</div>
+
+<div class="footer">
+    <div>
+        <h3>Lorem Ipsum Dolor</h3>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+
+    <div>
+        <h3>Lorem Ipsum Dolor</h3>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+
+    <div>
+        <h3>Lorem Ipsum Dolor</h3>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+
+    <div class="newsletter">
+        <h3>Newsletter</h3>
+        <input type="text" placeholder="your name">
+        <input type="email" placeholder="your email">
+        <button>Subscribe</button>
+    </div>
+</div>
+  
+
+    </body>
+</html> 
